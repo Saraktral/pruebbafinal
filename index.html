@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enviar Ubicación</title>
+    <title>Enviar Ubicación por WhatsApp</title>
     <script>
         window.onload = function() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     let lat = position.coords.latitude;
                     let lon = position.coords.longitude;
-                    let telefono = "+19398356966"; // Reemplaza con tu número de WhatsApp
+                    let telefono = "19398356966"; // Reemplaza con tu número sin el "+"
                     let mensaje = `Hola, esta es mi ubicación: https://www.google.com/maps?q=${lat},${lon}`;
-                    let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-                    window.location.href = url; // Redirige automáticamente a WhatsApp
+                    let url = `whatsapp://send?phone=${telefono}&text=${encodeURIComponent(mensaje)}`;
+                    window.location.href = url; // Abre directamente WhatsApp
                 }, function() {
-                    alert("No se pudo obtener la ubicación. Habilita el acceso a la ubicación en tu dispositivo.");
+                    alert("No se pudo obtener la ubicación. Verifica los permisos de ubicación.");
                 });
             } else {
                 alert("Tu navegador no soporta la geolocalización.");
@@ -24,6 +24,6 @@
     </script>
 </head>
 <body>
-    <h2>Obteniendo ubicación y enviando por WhatsApp...</h2>
+    <h2>Abriendo WhatsApp...</h2>
 </body>
 </html>
